@@ -38,6 +38,9 @@ android {
 
 dependencies {
     implementation 'com.sendbird.sdk:uikit:3.10.1'
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation "com.google.firebase:firebase-auth-ktx"
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'

@@ -1,6 +1,8 @@
 package com.rodrigojscript.michat
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.sendbird.android.exception.SendbirdException
 import com.sendbird.android.handler.InitResultHandler
 import com.sendbird.uikit.SendbirdUIKit
@@ -11,6 +13,8 @@ import com.sendbird.uikit.interfaces.UserInfo
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        val user = FirebaseAuth.getInstance().currentUser
+        FirebaseApp.initializeApp(this)
 
         SendbirdUIKit.init(object : SendbirdUIKitAdapter {
             override fun getAppId(): String {
@@ -24,11 +28,27 @@ class BaseApplication : Application() {
             override fun getUserInfo(): UserInfo {
                 return object : UserInfo {
                     override fun getUserId(): String {
-                        return "2" // Specify your user ID.
+                        var id = ""
+                        if(user?.uid == "stNqmlTAOISwqnzdX0X36kem6eA3") {
+                             id = "2" // Specify your user ID.
+                        } else if (user?.uid == "J6uimhq7jIXt5xV9fiJe7gmNBeJ2"){
+                             id = "1"
+                        } else {
+                            id = "0"
+                        }
+                        return id
                     }
 
                     override fun getNickname(): String {
-                        return "Nico" // Specify your user nickname.
+                        var name = ""
+                        if(user?.uid == "stNqmlTAOISwqnzdX0X36kem6eA3") {
+                            name = "Nico" // Specify your user ID.
+                        } else if (user?.uid == "J6uimhq7jIXt5xV9fiJe7gmNBeJ2"){
+                            name = "Rodri"
+                        } else {
+                            name = "0"
+                        }
+                        return name
                     }
 
                     override fun getProfileUrl(): String {
