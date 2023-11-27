@@ -18,7 +18,7 @@ class BaseApplication : Application() {
 
         SendbirdUIKit.init(object : SendbirdUIKitAdapter {
             override fun getAppId(): String {
-                return "99A77805-DBA5-446B-B89B-34793144D7BC" // Specify your Sendbird application ID.
+                return "4229ACD5-B3BD-45DF-BB1E-59E1C961DEDF" // Specify your Sendbird application ID.
             }
 
             override fun getAccessToken(): String {
