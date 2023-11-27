@@ -13,8 +13,8 @@ import com.sendbird.uikit.interfaces.UserInfo
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        val user = FirebaseAuth.getInstance().currentUser
         FirebaseApp.initializeApp(this)
+        val user = FirebaseAuth.getInstance().currentUser
 
         SendbirdUIKit.init(object : SendbirdUIKitAdapter {
             override fun getAppId(): String {
@@ -28,27 +28,19 @@ class BaseApplication : Application() {
             override fun getUserInfo(): UserInfo {
                 return object : UserInfo {
                     override fun getUserId(): String {
-                        var id = ""
-                        if(user?.uid == "stNqmlTAOISwqnzdX0X36kem6eA3") {
-                             id = "2" // Specify your user ID.
-                        } else if (user?.uid == "J6uimhq7jIXt5xV9fiJe7gmNBeJ2"){
-                             id = "1"
-                        } else {
-                            id = "0"
+                        return when (user?.uid) {
+                            "stNqmlTAOISwqnzdX0X36kem6eA3" -> "2"
+                            "J6uimhq7jIXt5xV9fiJe7gmNBeJ2" -> "1"
+                            else -> throw IllegalStateException("User ID not recognized")
                         }
-                        return id
                     }
 
                     override fun getNickname(): String {
-                        var name = ""
-                        if(user?.uid == "stNqmlTAOISwqnzdX0X36kem6eA3") {
-                            name = "Nico" // Specify your user ID.
-                        } else if (user?.uid == "J6uimhq7jIXt5xV9fiJe7gmNBeJ2"){
-                            name = "Rodri"
-                        } else {
-                            name = "0"
+                        return when (user?.uid) {
+                            "stNqmlTAOISwqnzdX0X36kem6eA3" -> "Nico"
+                            "J6uimhq7jIXt5xV9fiJe7gmNBeJ2" -> "Rodri"
+                            else -> throw IllegalStateException("User nickname not recognized")
                         }
-                        return name
                     }
 
                     override fun getProfileUrl(): String {

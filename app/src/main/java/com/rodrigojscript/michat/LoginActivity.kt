@@ -3,9 +3,11 @@ package com.rodrigojscript.michat
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.sendbird.uikit.activities.ChannelListActivity
 
@@ -37,16 +39,19 @@ class LoginActivity : AppCompatActivity() {
     private fun signIn(email: String, password: String) {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
+                Log.d("LoginActivity", "Sign in complete. Successful: ${task.isSuccessful}")
+
                 if (task.isSuccessful) {
-                    // La autenticación en Firebase fue exitosa
-                    val intent = Intent(this, ChannelListActivity::class.java)
+                    Log.d("LoginActivity", "Authentication successful")
+
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    // La autenticación en Firebase falló.
-                    // Mostrar un mensaje de error o realizar alguna acción de manejo de error.
+                    Log.e("LoginActivity", "Authentication failed", task.exception)
                     Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
                 }
             }
     }
+
 }

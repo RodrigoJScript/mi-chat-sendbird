@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "844521006919",
+    "project_id": "login2-e557a",
+    "storage_bucket": "login2-e557a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844521006919:android:0c43247d62468aa0240e62",
+        "android_client_info": {
+          "package_name": "com.rodrigojscript.michat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844521006919-h0vu1epv3bru09s90a122nt1089786gu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVbV2OuogACYr_gpa1fotjrsjHH9H0oFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844521006919-h0vu1epv3bru09s90a122nt1089786gu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "844521006919-87s6994lvoo4dsf4gpriophihk7ab2qc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.loginflutter.login.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
